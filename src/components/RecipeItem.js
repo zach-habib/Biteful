@@ -7,8 +7,8 @@ const style = {
 const RecipeItem = (props) => {
     return (
         <div style={style}>
-            <p>{props.name}</p>
-            <p>{props.desc}</p>
+            <p>{props.data.name}</p>
+            <p>{props.data.desc}</p>
         </div>
     )
 }

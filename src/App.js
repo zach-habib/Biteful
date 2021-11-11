@@ -9,8 +9,9 @@ function App() {
       <h1>Recipe App</h1>
 
       <RecipeView />
-      <AddButton />
-      <Link to="/create">Create</Link>
+      <Link to="/create">
+        <AddButton />
+      </Link>
     </div>
   );
 }

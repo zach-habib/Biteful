@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import { Link } from "react-router-dom"
 import './App.css';
 import RecipeView from "./components/RecipeView"
 import AddButton from './components/AddButton'
@@ -8,8 +8,9 @@ function App() {
     <div className="App">
       <h1>Recipe App</h1>
 
-      <RecipeView/>
+      <RecipeView />
       <AddButton />
+      <Link to="/create">Create</Link>
     </div>
   );
 }

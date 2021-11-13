@@ -1,32 +1,26 @@
 import { useFormik } from 'formik'
+import { useNavigate } from 'react-router-dom'
+import recipesData from './../components/recipesData.js'
 
 const style = {
 	margin: "0 auto"
 }
 
-// const Create = () => {
-// 	return (
-// 		<div style={style}>
-// 			<h1>Create Recipe</h1>
-// 			<Formik
-// 				initalValues={{}}
-// 			>
-// 				<Form>
-// 					<input type="text" id="title" name="title"/>
-// 				</Form>
-// 			</Formik>
-// 		</div>
-// 	)
-// }
-
 const Create = () => {
+	let navigate = useNavigate();
 	const formik = useFormik({
 		initialValues: {
 			title: '',
 			desc: ''
 		},
 		onSubmit: values => {
-			alert(JSON.stringify(values, null, 2))
+			const newRecipe = {
+				id: recipesData.length,
+				name: values.title,
+				desc: values.desc
+			}
+			recipesData.push(newRecipe);
+			navigate("..");
 		}
 	})
 
@@ -42,7 +36,7 @@ const Create = () => {
 					onChange={formik.handleChange}
 					value={formik.values.title}
 				/>
-				<br/>
+				<br />
 				<label htmlFor="desc">Description: </label>
 				<input
 					id="desc"
@@ -51,7 +45,7 @@ const Create = () => {
 					onChange={formik.handleChange}
 					value={formik.values.desc}
 				/>
-				<br/>
+				<br />
 				<button type="submit">Submit</button>
 			</form>
 		</div>

@@ -1,53 +1,52 @@
-import { useFormik } from 'formik'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import recipesData from './../components/recipesData.js'
+import Step from './../components/Step'
 
-const style = {
-	margin: "0 auto"
+let recipeData, setRecipe
+
+const HandleChange = (values) => {
+	setRecipe(prev => {
+		const newRecipe = prev.slice()
+		newRecipe[values.id] = values
+		return newRecipe
+	})
+}
+
+const AddStep = (prev) => {
+	const newStep = {
+		id: prev.length,
+		title: '',
+		desc: ''
+	}
+
+	setRecipe(prev => [...prev, newStep])
 }
 
 const Create = () => {
+	[recipeData, setRecipe] = useState([{
+		id: 0,
+		title: '',
+		desc: ''
+	}])
 	let navigate = useNavigate();
-	const formik = useFormik({
-		initialValues: {
-			title: '',
-			desc: ''
-		},
-		onSubmit: values => {
-			const newRecipe = {
-				id: recipesData.length,
-				name: values.title,
-				desc: values.desc
-			}
-			recipesData.push(newRecipe);
-			navigate("..");
-		}
-	})
 
 	return (
 		<div>
 			<h1>Create Recipe</h1>
-			<form onSubmit={formik.handleSubmit}>
-				<label htmlFor="title">Title: </label>
-				<input
-					id="title"
-					name="title"
-					type="text"
-					onChange={formik.handleChange}
-					value={formik.values.title}
-				/>
-				<br />
-				<label htmlFor="desc">Description: </label>
-				<input
-					id="desc"
-					name="desc"
-					type="text"
-					onChange={formik.handleChange}
-					value={formik.values.desc}
-				/>
-				<br />
-				<button type="submit">Submit</button>
-			</form>
+			{recipeData.map(item => {
+				return (
+					<Step
+						key={item.id}
+						id={item.id}
+						title={item.title}
+						desc={item.desc}
+						onChange={HandleChange}
+					/>
+				)
+			})}
+			<button onClick={AddStep}>Add Step</button>
+			<h2>Preview: </h2>
+			<p>{JSON.stringify(recipeData)}</p>
 		</div>
 	)
 }

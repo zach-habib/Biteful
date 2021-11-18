@@ -21,6 +21,7 @@ const Step = (props) => {
 
   return (
     <form>
+      <h4>{props.item.id}</h4>
       <label htmlFor="title">Title: </label>
       <input
         id="title"

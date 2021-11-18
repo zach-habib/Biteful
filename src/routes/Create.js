@@ -6,36 +6,47 @@ let recipeData, setRecipe
 
 const HandleChange = (values) => {
 	setRecipe(prev => {
-		const newRecipe = prev.slice()
-		newRecipe[values.id] = values
+		const newRecipe = { ...prev }
+		newRecipe.steps[values.id] = values
 		return newRecipe
 	})
 }
 
-const AddStep = (prev) => {
+const AddStep = () => {
 	setRecipe(prev => {
+		console.log(prev)
 		const newStep = {
-			id: prev.length,
+			id: prev.steps.length,
 			title: '',
 			desc: ''
 		}
-		return [...prev, newStep]
+		// return [...prev.steps, newStep]
+		return { ...prev, steps: [...prev.steps, newStep] }
 	})
 }
 
 const Create = () => {
-	[recipeData, setRecipe] = useState([{
-		id: 0,
-		title: '',
-		desc: ''
-	}])
+	// [recipeData, setRecipe] = useState([{
+	// 	id: 0,
+	// 	title: '',
+	// 	desc: ''
+	// }])
+	[recipeData, setRecipe] = useState(
+		{
+			title: '',
+			desc: '',
+			steps: []
+		}
+	)
 	let navigate = useNavigate();
+
+	console.log(recipeData.steps)
 
 	return (
 		<div>
 			<h1>Create Recipe</h1>
-			<h5>{recipeData.length}</h5>
-			{recipeData.map(item => {
+			<h2>Title</h2>
+			{recipeData.steps.map(item => {
 				return (
 					<Step
 						key={item.id}

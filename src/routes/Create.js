@@ -34,6 +34,10 @@ const Create = () => {
 	)
 	let navigate = useNavigate();
 
+	const HandleSubmit = () => {
+		recipesData.push(recipeData)
+	}
+
 	return (
 		<div>
 			<h1>Create Recipe</h1>
@@ -48,7 +52,7 @@ const Create = () => {
 				)
 			})}
 			<button onClick={AddStep}>Add Step</button>
-			<button>Submit</button>
+			<button onClick={HandleSubmit}>Submit</button>
 			<h2>Preview: </h2>
 			<p>{JSON.stringify(recipeData)}</p>
 		</div>

@@ -13,13 +13,14 @@ const HandleChange = (values) => {
 }
 
 const AddStep = (prev) => {
-	const newStep = {
-		id: prev.length,
-		title: '',
-		desc: ''
-	}
-
-	setRecipe(prev => [...prev, newStep])
+	setRecipe(prev => {
+		const newStep = {
+			id: prev.length,
+			title: '',
+			desc: ''
+		}
+		return [...prev, newStep]
+	})
 }
 
 const Create = () => {
@@ -33,13 +34,12 @@ const Create = () => {
 	return (
 		<div>
 			<h1>Create Recipe</h1>
+			<h5>{recipeData.length}</h5>
 			{recipeData.map(item => {
 				return (
 					<Step
 						key={item.id}
-						id={item.id}
-						title={item.title}
-						desc={item.desc}
+						item={item}
 						onChange={HandleChange}
 					/>
 				)

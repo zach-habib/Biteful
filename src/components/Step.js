@@ -11,9 +11,9 @@ const Step = (props) => {
 
   const formik = useFormik({
     initialValues: {
-      id: props.id,
-      title: props.title,
-      desc: props.desc
+      id: props.item.id,
+      title: props.item.title,
+      desc: props.item.desc
     },
     validateOnChange: true,
     validate: validate

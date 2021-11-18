@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Step from './../components/Step'
+import recipesData from './../components/recipesData'
 
 let recipeData, setRecipe
 
@@ -14,23 +15,16 @@ const HandleChange = (values) => {
 
 const AddStep = () => {
 	setRecipe(prev => {
-		console.log(prev)
 		const newStep = {
 			id: prev.steps.length,
 			title: '',
 			desc: ''
 		}
-		// return [...prev.steps, newStep]
 		return { ...prev, steps: [...prev.steps, newStep] }
 	})
 }
 
 const Create = () => {
-	// [recipeData, setRecipe] = useState([{
-	// 	id: 0,
-	// 	title: '',
-	// 	desc: ''
-	// }])
 	[recipeData, setRecipe] = useState(
 		{
 			title: '',
@@ -39,8 +33,6 @@ const Create = () => {
 		}
 	)
 	let navigate = useNavigate();
-
-	console.log(recipeData.steps)
 
 	return (
 		<div>
@@ -56,6 +48,7 @@ const Create = () => {
 				)
 			})}
 			<button onClick={AddStep}>Add Step</button>
+			<button>Submit</button>
 			<h2>Preview: </h2>
 			<p>{JSON.stringify(recipeData)}</p>
 		</div>

@@ -36,6 +36,8 @@ const Create = () => {
 
 	const HandleSubmit = () => {
 		recipesData.push(recipeData)
+		navigate("..")
+		console.log(recipeData)
 	}
 
 	return (

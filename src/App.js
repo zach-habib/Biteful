@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom"
+import { Link, BrowserRouter, Routes, Route } from "react-router-dom"
 import './App.css';
-import RecipeView from "./components/RecipeView"
-import AddButton from './components/AddButton'
+import Home from "./routes/Home"
+import Create from "./routes/Create"
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithRedirect, getRedirectResult, GoogleAuthProvider } from 'firebase/auth';
 
@@ -48,13 +48,12 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Recipe App</h1>
-      {/* <RecipeView /> */}
-      <Link to="/create">
-        <AddButton />
-      </Link>
-      {user ? <RecipeView /> : <button onClick={SignIn}>Sign In</button>}
-
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home user={user} />} />
+          <Route path="create" element={<Create />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

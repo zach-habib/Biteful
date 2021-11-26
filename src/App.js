@@ -1,9 +1,12 @@
-import { Link, BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { initializeApp } from "firebase/app";
+import { getAuth, signInWithRedirect, getRedirectResult, GoogleAuthProvider } from 'firebase/auth';
+import { FirebaseAuthProvider } from "./FirebaseAuthProvider";
+
 import './App.css';
 import Home from "./routes/Home"
 import Create from "./routes/Create"
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithRedirect, getRedirectResult, GoogleAuthProvider } from 'firebase/auth';
+import Login from "./routes/Login"
 
 const firebaseConfig = {
   apiKey: "AIzaSyDAQyMXDa-HVItPIQQjGT5qZu9GxBnhy8E",
@@ -40,20 +43,22 @@ getRedirectResult(auth)
     // ...
   });
 
-function SignIn() {
-  signInWithRedirect(auth, provider)
-}
-
 function App() {
+  const SignIn = () => {
+    signInWithRedirect(auth, provider)
+  }
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home user={user} />} />
-          <Route path="create" element={<Create />} />
-        </Routes>
-      </BrowserRouter>
+      <FirebaseAuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="create" element={<Create />} />
+            <Route path="login" element={<Login login={SignIn}/>} />
+          </Routes>
+        </BrowserRouter>
+      </FirebaseAuthProvider>
     </div>
   );
 }

@@ -1,17 +1,22 @@
 import { Link } from 'react-router-dom'
 import RecipeView from './../components/RecipeView'
 import AddButton from './../components/AddButton'
-import { getAuth } from 'firebase/auth'
+import { useFirebaseAuth } from '../FirebaseAuthProvider'
 
-// const auth = getAuth();
-
-function Home(props) {
-  console.log(props.user)
+function Home() {
+  console.log(useFirebaseAuth())  
   return (
     <div>
       <RecipeView />
       <Link to="/create">
         <AddButton />
+      </Link>
+      <h3>Signed {useFirebaseAuth() ? "in" : "out"}</h3>
+
+      <Link to="/login">
+        <button>
+          Log In
+        </button>
       </Link>
     </div>
   )

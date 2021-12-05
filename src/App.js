@@ -28,9 +28,6 @@ getRedirectResult(auth)
     // This gives you a Google Access Token. You can use it to access Google APIs.
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
-
-    // The signed-in user info.
-    // TODO: Sync user with react state
     user = result.user;
   }).catch((error) => {
     // Handle Errors here.

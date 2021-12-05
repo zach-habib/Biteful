@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useFirebaseAuth } from '../FirebaseAuthProvider'
 import Step from './../components/Step'
 import recipesData from './../components/recipesData'
 
@@ -33,12 +34,20 @@ const Create = () => {
 		}
 	)
 	let navigate = useNavigate();
+	let auth = useFirebaseAuth();
 
 	const HandleSubmit = () => {
 		recipesData.push(recipeData)
 		navigate("..")
 		console.log(recipeData)
 	}
+
+	//Redirect to login page if logged out
+	useEffect(() => {
+		if (!auth) {
+			navigate("/login")
+		}
+	})
 
 	return (
 		<div>

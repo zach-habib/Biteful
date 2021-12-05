@@ -4,7 +4,6 @@ import AddButton from './../components/AddButton'
 import { useFirebaseAuth } from '../FirebaseAuthProvider'
 
 function Home() {
-  console.log(useFirebaseAuth())  
   return (
     <div>
       <RecipeView />
@@ -15,7 +14,7 @@ function Home() {
 
       <Link to="/login">
         <button>
-          Log In
+          Log In Page
         </button>
       </Link>
     </div>

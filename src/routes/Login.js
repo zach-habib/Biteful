@@ -1,15 +1,31 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useFirebaseAuth } from '../FirebaseAuthProvider'
 
-//todo: Make the login button navigate backwards instead of always going home
 function Login(props) {
+  const navigate = useNavigate();
+  const auth = useFirebaseAuth();
+
+  //Call firebase login and go back to previous page
+  const HandleLogin = () => {
+    props.login();
+    navigate(-1);
+  }
+
+  const HandleLogout = () => {
+    props.logout();
+    navigate(-1);
+  }
+
   return (
     <div>
-      <Link to="/">
-        <button onClick={props.login}>
-          Log In
-        </button>
-      </Link>
+      <button onClick={HandleLogin}>
+        Log In With Google
+      </button>
+
+      <button onClick={HandleLogout}>
+        Sign Out
+      </button>
     </div>
   )
 }

@@ -48,6 +48,10 @@ function App() {
     signInWithRedirect(auth, provider)
   }
 
+  const SignOut = () => {
+    auth.signOut();
+  }
+
   return (
     <div className="App">
       <FirebaseAuthProvider>
@@ -55,7 +59,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="create" element={<Create />} />
-            <Route path="login" element={<Login login={SignIn}/>} />
+            <Route path="login" element={<Login login={SignIn} logout={SignOut} />} />
           </Routes>
         </BrowserRouter>
       </FirebaseAuthProvider>

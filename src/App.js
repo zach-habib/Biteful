@@ -51,6 +51,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1 className="underline text-fuchsia-300">test</h1>
       <FirebaseAuthProvider>
         <BrowserRouter>
           <Routes>

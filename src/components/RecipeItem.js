@@ -1,12 +1,8 @@
 import React from "react"
 
-const style = {
-  backgroundColor: "gray"
-}
-
 const RecipeItem = (props) => {
   return (
-    <div style={style}>
+    <div className="recipeItem">
       <p>{props.data.name}</p>
       <p>{props.data.desc}</p>
     </div>

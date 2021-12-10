@@ -6,7 +6,7 @@ const RecipeView = () => {
   const recipes = recipesData.map(item => <RecipeItem key={item.id} data={item} />)
 
   return (
-    <div>
+    <div class="recipeView">
       {recipes}
     </div>
   )

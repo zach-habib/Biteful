@@ -50,7 +50,7 @@ const Create = () => {
 	})
 
 	return (
-		<div>
+		<div className="main">
 			<h1>Create Recipe</h1>
 			<h2>Title</h2>
 			{recipeData.steps.map(item => {

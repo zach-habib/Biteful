@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
+import Button from '@mui/material/Button'
 import RecipeView from './../components/RecipeView'
-import AddButton from './../components/AddButton'
 import { useFirebaseAuth } from '../FirebaseAuthProvider'
 import Sidebar from '../components/Sidebar/Sidebar'
 
@@ -12,7 +12,7 @@ function Home() {
         <h1 className="text-blue-500 underline">Hello World!</h1>
         <RecipeView />
         <Link to="/create">
-          <AddButton />
+          <Button variant="contained">Add</Button>
         </Link>
         <h3>Signed {useFirebaseAuth() ? "in" : "out"}</h3>
 

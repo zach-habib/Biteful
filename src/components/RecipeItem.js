@@ -1,5 +1,8 @@
 import React from "react"
 
+//idea: show recipe image on home page,
+//and show details when hovered.
+
 const RecipeItem = (props) => {
   return (
     <div className="recipeItem">

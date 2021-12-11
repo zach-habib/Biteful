@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useFirebaseAuth } from '../FirebaseAuthProvider'
 import Step from './../components/Step'
 import recipesData from './../components/recipesData'
+import Sidebar from "../components/Sidebar/Sidebar"
 
 let recipeData, setRecipe
 
@@ -51,21 +52,24 @@ const Create = () => {
 
 	return (
 		<div className="main">
-			<h1>Create Recipe</h1>
-			<h2>Title</h2>
-			{recipeData.steps.map(item => {
-				return (
-					<Step
-						key={item.id}
-						item={item}
-						onChange={HandleChange}
-					/>
-				)
-			})}
-			<button onClick={AddStep}>Add Step</button>
-			<button onClick={HandleSubmit}>Submit</button>
-			<h2>Preview: </h2>
-			<p>{JSON.stringify(recipeData)}</p>
+			<Sidebar />
+			<div className="content">
+				<h1>Create Recipe</h1>
+				<h2>Title</h2>
+				{recipeData.steps.map(item => {
+					return (
+						<Step
+							key={item.id}
+							item={item}
+							onChange={HandleChange}
+						/>
+					)
+				})}
+				<button onClick={AddStep}>Add Step</button>
+				<button onClick={HandleSubmit}>Submit</button>
+				<h2>Preview: </h2>
+				<p>{JSON.stringify(recipeData)}</p>
+			</div>
 		</div>
 	)
 }

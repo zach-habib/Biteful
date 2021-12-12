@@ -9,7 +9,7 @@ function Home() {
     <div className="main">
       <Sidebar />
       <div className="content">
-        <h1 className="text-blue-500 underline">Hello World!</h1>
+        <h1>Byteful</h1>
         <RecipeView />
         <Link to="/create">
           <Button variant="contained">Add</Button>

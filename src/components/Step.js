@@ -1,4 +1,5 @@
 import { useFormik } from 'formik'
+import TextField from '@mui/material/TextField'
 
 let ChangeHandler;
 
@@ -22,22 +23,18 @@ const Step = (props) => {
   return (
     <form>
       <h4>{props.item.id}</h4>
-      <label htmlFor="title">Title: </label>
-      <input
+      <TextField
         id="title"
-        name="title"
-        type="text"
-        onChange={formik.handleChange}
+        label="Title"
         value={formik.values.title}
+        onChange={formik.handleChange}
       />
       <br />
-      <label htmlFor="desc">Description: </label>
-      <input
+      <TextField
         id="desc"
-        name="desc"
-        type="text"
-        onChange={formik.handleChange}
+        label="Description"
         value={formik.values.desc}
+        onChange={formik.handleChange}
       />
       <br />
     </form>

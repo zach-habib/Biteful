@@ -1,6 +1,8 @@
 import { useFormik } from 'formik'
 import TextField from '@mui/material/TextField'
 
+import './Step.css'
+
 let ChangeHandler;
 
 const validate = (values) => {
@@ -21,22 +23,19 @@ const Step = (props) => {
   })
 
   return (
-    <form>
-      <h4>{props.item.id}</h4>
+    <form className="stepForm">
       <TextField
         id="title"
         label="Title"
         value={formik.values.title}
         onChange={formik.handleChange}
       />
-      <br />
       <TextField
         id="desc"
         label="Description"
         value={formik.values.desc}
         onChange={formik.handleChange}
       />
-      <br />
     </form>
   )
 }

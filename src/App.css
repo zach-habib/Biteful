@@ -1,20 +1,24 @@
+
 .App {
-  text-align: center;
+  margin-top: 0;
 }
 
 .main {
   text-align: center;
-  display: flex;
-  justify-content: center;
 }
 
 .content {
-  width: 50%;
-  background: lightgray;
+  width: 100vw - 200px;
+  height: 100%;
+  margin-left: 200px;
 }
 
 .sidebar {
   background: gray;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 200px;
   display: flex;
   flex-direction: column;
 }

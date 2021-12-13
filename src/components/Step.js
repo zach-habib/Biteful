@@ -24,14 +24,16 @@ const Step = (props) => {
 
   return (
     <form className="stepForm">
-      <TextField
+      <TextField className="title"
         id="title"
         label="Title"
         value={formik.values.title}
         onChange={formik.handleChange}
       />
-      <TextField
+      <TextField className="desc"
         id="desc"
+        multiline
+        rows={4}
         label="Description"
         value={formik.values.desc}
         onChange={formik.handleChange}

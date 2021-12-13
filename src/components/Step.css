@@ -3,3 +3,11 @@
   flex-direction: column;
   margin: 2px;
 }
+
+.title {
+  margin: 4px;
+}
+
+.desc {
+  margin: 4px;
+}

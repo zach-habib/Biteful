@@ -43,13 +43,6 @@ const Create = () => {
 		console.log(recipeData)
 	}
 
-	//Redirect to login page if logged out
-	useEffect(() => {
-		if (!auth) {
-			navigate("/login")
-		}
-	})
-
 	return (
 		<div className="main">
 			<Sidebar />

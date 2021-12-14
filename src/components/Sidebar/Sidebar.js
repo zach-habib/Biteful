@@ -5,15 +5,33 @@ import SidebarItem from "./SidebarItem"
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <Link to="/">
-        <Button variant="contained">Home</Button>
-      </Link>
-      <Link to="login">
-        <Button variant="contained">Login</Button>
-      </Link>
-      <Link to="create">
-        <Button variant="contained">create</Button>
-      </Link>
+      <Button
+        variant="contained"
+        component={Link}
+        to="/"
+        label="Home"
+        value="home"
+      >
+        Home
+      </Button>
+      <Button
+        variant="contained"
+        component={Link}
+        to="/login"
+        label="Login"
+        value="login"
+      >
+        Login
+      </Button>
+      <Button
+        variant="contained"
+        component={Link}
+        to="/create"
+        label="Create"
+        value="create"
+      >
+        Create
+      </Button>
     </div>
   )
 }

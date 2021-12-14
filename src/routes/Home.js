@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import Button from '@mui/material/Button'
 import RecipeView from './../components/RecipeView'
 import { useFirebaseAuth } from '../FirebaseAuthProvider'
-import Sidebar from '../components/Sidebar/Sidebar'
+import Sidebar from '../components/sidebar/Sidebar'
 
 function Home() {
   return (

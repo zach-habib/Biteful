@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useFirebaseAuth } from '../FirebaseAuthProvider'
 import Step from './../components/Step'
 import recipesData from './../components/recipesData'
-import Sidebar from "../components/Sidebar/Sidebar"
+import Sidebar from "../components/sidebar/Sidebar"
 
 let recipeData, setRecipe
 

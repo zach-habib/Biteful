@@ -1,43 +1,40 @@
-import { useState } from "react"
+import { useEffect } from "react"
 import Step from './Step'
 
-let data, setData
-
-const HandleChange = (values) => {
-  setData(prev => {
-    const newRecipe = { ...prev }
-    newRecipe.steps[values.id] = values
-    return newRecipe
-  })
+const StockStep = {
+  title: '',
+  desc: '',
 }
 
-const AddStep = () => {
-  setData(prev => {
-    const newStep = {
-      id: prev.steps.length,
-      title: '',
-      desc: ''
-    }
-    return { ...prev, steps: [...prev.steps, newStep] }
-  })
-}
+const Section = (props) => {
+  const data = props.value
+  const ParentChange = props.onChange;
 
-const Section = () => {
-  [data, setData] = useState(
-    {
-      title: '',
-      desc: '',
-      steps: [<Step />]
-    }
-  )
+  const HandleChange = (values, idx) => {
+    let newData = { ...data };
+    newData.steps[idx] = values;
+    ParentChange(newData, props.id);
+  }
+
+  const AddStep = () => {
+    let newData = { ...data };
+    newData.steps[newData.steps.length] = { ...StockStep };
+    ParentChange(newData, props.id);
+  }
+
+  useEffect(() => {
+    if (data.steps.length === 0) AddStep();
+  })
+
 
   return (
     <div>
-      {data.steps.map(item => {
+      {data.steps.map((item, idx) => {
         return (
           <Step
-            key={item.id}
-            item={item}
+            key={idx}
+            values={item}
+            id={idx}
             onChange={HandleChange}
           />
         )

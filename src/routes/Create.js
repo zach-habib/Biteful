@@ -2,8 +2,8 @@ import { useState } from 'react'
 import Box from '@mui/material/Box'
 import { TabPanel, TabContext, TabList } from '@mui/lab';
 import { Tab } from '@mui/material'
-import Section from '../components/create/Section'
-import Sidebar from "../components/sidebar/Sidebar"
+import Section from './../components/create/Section'
+import Sidebar from "./../components/sidebar/Sidebar"
 
 // const recipe = {
 // 	overview: {},

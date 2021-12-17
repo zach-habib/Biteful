@@ -46,7 +46,7 @@ const Create = () => {
 						</TabList>
 					</Box>
 					<TabPanel value="1"><Section id={0} value={recipe[0]} onChange={handleData} /></TabPanel>
-					<TabPanel value="2"></TabPanel>
+					<TabPanel value="2"><Section id={1} value={recipe[1]} onChange={handleData} type="ingredients" /></TabPanel>
 					<TabPanel value="3"><Section id={2} value={recipe[2]} onChange={handleData} /></TabPanel>
 					<TabPanel value="4"><Section id={3} value={recipe[3]} onChange={handleData} /></TabPanel>
 				</TabContext>

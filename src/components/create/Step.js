@@ -6,22 +6,22 @@ const Step = (props) => {
   const ChangeHandler = props.onChange
 
   const handleFieldChange = (fieldName) => (event) => {
-    let newValues = { ...props.values }; //Copy values object
+    let newValue = { ...props.value }; //Copy values object
 
     //Change the associated parameter
-    if (fieldName === "title") newValues.title = event.target.value;
-    if (fieldName === "desc") newValues.desc = event.target.value;
+    if (fieldName === "title") newValue.title = event.target.value;
+    if (fieldName === "desc") newValue.desc = event.target.value;
 
     //Call change handler of parent component
-    ChangeHandler(newValues, props.id);
+    ChangeHandler(newValue, props.id);
   }
 
   return (
-    <form className="stepForm">
+    <div className="stepForm">
       <TextField className="title"
         id="title"
         label="Title"
-        value={props.values.title}
+        value={props.value.title}
         onChange={handleFieldChange("title")}
       />
       <TextField className="desc"
@@ -29,10 +29,10 @@ const Step = (props) => {
         multiline
         rows={4}
         label="Description"
-        value={props.values.desc}
+        value={props.value.desc}
         onChange={handleFieldChange("desc")}
       />
-    </form>
+    </div>
   )
 }
 

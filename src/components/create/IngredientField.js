@@ -31,8 +31,11 @@ const IngredientField = (props) => {
       />
       <TextField
         id="amount"
-        label="Number"
+        label="Amount"
         type="number"
+        InputLabelProps={{
+          shrink: true,
+        }}
         value={props.value.amount}
         onChange={handleFieldChange("amount")}
       />

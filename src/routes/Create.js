@@ -12,7 +12,7 @@ import Sidebar from "./../components/sidebar/Sidebar"
 // 	instructions: {}
 // }
 
-const stockRecipe = [{ steps: [] }, { steps: [] }, { steps: [] }, { steps: [] }];
+const stockRecipe = [{ items: [] }, { items: [] }, { items: [] }, { items: [] }];
 
 const Create = () => {
 	const [value, setValue] = useState("0");

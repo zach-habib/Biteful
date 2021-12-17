@@ -14,13 +14,13 @@ const Section = (props) => {
 
   const HandleChange = (values, idx) => {
     let newData = { ...data };
-    newData.steps[idx] = values;
+    newData.items[idx] = values;
     ParentChange(newData, props.id);
   }
 
-  const AddStep = () => {
+  const AddItem = () => {
     let newData = { ...data };
-    newData.steps[newData.steps.length] =
+    newData.items[newData.items.length] =
       props.type === "ingredient" ?
         { ...StockIngredient }
         :
@@ -29,11 +29,11 @@ const Section = (props) => {
   }
 
   const GetSteps = () => {
-    return data.steps.map((item, idx) => {
+    return data.items.map((item, idx) => {
       return (
         <Step
           key={idx}
-          values={item}
+          value={item}
           id={idx}
           onChange={HandleChange}
         />
@@ -42,7 +42,7 @@ const Section = (props) => {
   }
 
   const GetIngredients = () => {
-    return data.steps.map((item, idx) => {
+    return data.items.map((item, idx) => {
       return (
         <IngredientField
           key={idx}
@@ -55,13 +55,13 @@ const Section = (props) => {
   }
 
   useEffect(() => {
-    if (data.steps.length === 0) AddStep();
+    if (data.items.length === 0) AddItem();
   })
 
   return (
     <div>
       {props.type === "ingredients" ? GetIngredients() : GetSteps()}
-      <button onClick={AddStep}>Add Step</button>
+      <button onClick={AddItem}>Add Item</button>
     </div>
   )
 }

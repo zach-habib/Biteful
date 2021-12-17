@@ -49,10 +49,6 @@ const Create = () => {
 					<TabPanel value="2"><Section id={1} value={recipe[1]} onChange={handleData} type="ingredients" /></TabPanel>
 					<TabPanel value="3"><Section id={2} value={recipe[2]} onChange={handleData} /></TabPanel>
 				</TabContext>
-
-				<p>
-					{JSON.stringify(recipe)}
-				</p>
 			</div>
 		</div>
 	)

@@ -2,28 +2,19 @@ import { useState, useEffect } from 'react'
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import Sidebar from "../components/sidebar/Sidebar";
 
-// const db = getFirestore();
-
 const MyRecipes = () => {
   const [recipes, setRecipes] = useState([])
 
+  //Fetches recipe data from firestore and updates state.
+  //Todo: Change this to a query that only returns recipes made by the user.
   const fetchRecipes = async () => {
-    // const response = db.collection('recipes');
-    // const data = await response.get();
-    // data.docs.forEach(item => {
-    //   setRecipes([...recipes, item.data()])
-    // })
     const db = getFirestore();
     const data = await getDocs(collection(db, "recipes"));
-    console.log(data);
-    let docList = [];
+    const newRecipes = []
     data.forEach((doc) => {
-      console.log(`${doc.id} => ${doc.data()}`);
-      // setRecipes([...recipes, doc.data()]);
-      // setRecipes()
-      docList = [...docList, doc.data()]
+      newRecipes.push(doc.data())
     })
-    setRecipes(docList)
+    setRecipes(newRecipes);
   }
 
   useEffect(() => {

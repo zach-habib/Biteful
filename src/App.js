@@ -7,6 +7,7 @@ import './App.css';
 import Home from "./routes/Home"
 import Create from "./routes/Create"
 import Login from "./routes/Login"
+import MyRecipes from './routes/MyRecipes'
 
 const firebaseConfig = {
   apiKey: "AIzaSyDAQyMXDa-HVItPIQQjGT5qZu9GxBnhy8E",
@@ -57,6 +58,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="create" element={<Create />} />
             <Route path="login" element={<Login login={SignIn} logout={SignOut} />} />
+            <Route path="myrecipes" element={<MyRecipes />} />
           </Routes>
         </BrowserRouter>
       </FirebaseAuthProvider>

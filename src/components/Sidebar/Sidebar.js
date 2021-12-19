@@ -26,6 +26,15 @@ const Sidebar = () => {
       <Button
         variant="contained"
         component={Link}
+        to="/myrecipes"
+        label="MyRecipes"
+        value="myrecipes"
+      >
+        My Recipes
+      </Button>
+      <Button
+        variant="contained"
+        component={Link}
         to="/create"
         label="Create"
         value="create"

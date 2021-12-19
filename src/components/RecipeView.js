@@ -1,13 +1,16 @@
 import React from "react"
-import RecipeItem from "./RecipeItem"
-import recipesData from "./recipesData"
+import RecipeCard from "./RecipeCard"
 
-const RecipeView = () => {
-  const recipes = recipesData.map(item => <RecipeItem key={item.id} data={item} />)
+//props contains array of recipes
+
+const RecipeView = (props) => {
+  const recipeItems = props.recipes.map(recipe => {
+    return <RecipeCard recipe={recipe} />
+  })
 
   return (
-    <div className="recipeView">
-      {recipes}
+    <div className="recipe-view">
+      {recipeItems}
     </div>
   )
 }

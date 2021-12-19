@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import Sidebar from "../components/sidebar/Sidebar";
+import RecipeView from '../components/RecipeView';
 
 const MyRecipes = () => {
   const [recipes, setRecipes] = useState([])
@@ -27,9 +28,7 @@ const MyRecipes = () => {
       <div className="content">
         <h1>My Recipes</h1>
         <div className="recipes-view">
-          {recipes.map(recipe => {
-            return (<p>{JSON.stringify(recipe)}</p>)
-          })}
+          <RecipeView recipes={recipes} />
         </div>
       </div>
     </div>

@@ -10,7 +10,6 @@ function Home() {
       <Sidebar />
       <div className="content">
         <h1>Byteful</h1>
-        <RecipeView />
         <Link to="/create">
           <Button variant="contained">Add</Button>
         </Link>

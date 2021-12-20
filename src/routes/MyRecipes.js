@@ -13,7 +13,7 @@ const MyRecipes = () => {
     const data = await getDocs(collection(db, "recipes"));
     const newRecipes = []
     data.forEach((doc) => {
-      newRecipes.push(doc.data())
+      newRecipes.push({ id: doc.id, data: doc.data()})
     })
     setRecipes(newRecipes);
   }

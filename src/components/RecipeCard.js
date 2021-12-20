@@ -9,14 +9,18 @@ import Typography from '@mui/material/Typography';
 //and show details when hovered.
 
 const RecipeCard = (props) => {
+  const handleEdit = (recipeId) => (event) => {
+
+  }
+
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
-        <h3>{props.recipe.title}</h3>
-        <p>{props.recipe.description}</p>
+        <h3>{props.recipe.data.title}</h3>
+        <p>{props.recipe.data.description}</p>
       </CardContent>
       <CardActions>
-        <Button size="small">Edit</Button>
+        <Button size="small" onChange={handleEdit()}>Edit</Button>
         <Button size="small">Delete</Button>
       </CardActions>
     </Card>

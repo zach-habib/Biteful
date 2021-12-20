@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import { getFirestore, doc, getDoc } from "firebase/firestore";
 import Box from '@mui/material/Box'
 import { TabPanel, TabContext, TabList } from '@mui/lab';
 import { Tab } from '@mui/material'
@@ -14,7 +15,6 @@ const Create = () => {
 	const [recipe, setRecipe] = useState(stockRecipe);
 
 	const { recipeId } = useParams();
-	console.log(recipeId);
 
 	const handleTabChange = (event, newValue) => {
 		setValue(newValue);
@@ -27,6 +27,35 @@ const Create = () => {
 			return newData;
 		})
 	}
+
+	//Fetches recipe document data from Firebase
+	const fetchRecipe = async () => {
+		const db = getFirestore();
+		const docRef = doc(db, "recipes", recipeId);
+		const docSnap = await getDoc(docRef);
+
+		if (docSnap.exists()) {
+			setRecipeFromDoc(docSnap.data());
+		} else {
+			// doc.data() will be undefined in this case
+			// maybe prompt an error in the future.
+			console.log("No such document!");
+		}
+	}
+
+	//Changes recipe state from firebase document data
+	const setRecipeFromDoc = (data) => {
+		const newRecipe = [...stockRecipe];
+		newRecipe[0] = { title: data.title, desc: data.description };
+		// console.log(JSON.stringify(data));
+		newRecipe[1] = { items: data.ingredients };
+		newRecipe[2] = { items: data.directions };
+		setRecipe(newRecipe);
+	}
+
+	useEffect(() => {
+		fetchRecipe();
+	}, [])
 
 	return (
 		<div className="main">

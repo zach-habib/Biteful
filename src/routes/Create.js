@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useParams } from 'react-router-dom'
 import Box from '@mui/material/Box'
 import { TabPanel, TabContext, TabList } from '@mui/lab';
 import { Tab } from '@mui/material'
@@ -6,18 +7,14 @@ import Section from './../components/create/Section'
 import Step from './../components/create/Step'
 import Sidebar from "./../components/sidebar/Sidebar"
 
-// const recipe = {
-// 	overview: {},
-// 	ingredients: {},
-// 	prep: {},
-// 	instructions: {}
-// }
-
 const stockRecipe = [{}, { items: [] }, { items: [] }];
 
 const Create = () => {
 	const [value, setValue] = useState("0");
 	const [recipe, setRecipe] = useState(stockRecipe);
+
+	const { recipeId } = useParams();
+	console.log(recipeId);
 
 	const handleTabChange = (event, newValue) => {
 		setValue(newValue);

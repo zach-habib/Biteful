@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from 'react-router-dom'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -9,9 +10,6 @@ import Typography from '@mui/material/Typography';
 //and show details when hovered.
 
 const RecipeCard = (props) => {
-  const handleEdit = (recipeId) => (event) => {
-
-  }
 
   return (
     <Card sx={{ minWidth: 275 }}>
@@ -20,7 +18,9 @@ const RecipeCard = (props) => {
         <p>{props.recipe.data.description}</p>
       </CardContent>
       <CardActions>
-        <Button size="small" onChange={handleEdit()}>Edit</Button>
+        <Link to={`/create/${props.recipe.id}`}>
+          <Button size="small">Edit</Button>
+        </Link>
         <Button size="small">Delete</Button>
       </CardActions>
     </Card>

@@ -56,7 +56,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="create" element={<Create />} />
+            <Route exact path="create/:recipeId" element={<Create />} />
             <Route path="login" element={<Login login={SignIn} logout={SignOut} />} />
             <Route path="myrecipes" element={<MyRecipes />} />
           </Routes>

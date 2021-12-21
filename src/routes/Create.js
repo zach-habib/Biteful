@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 import Box from '@mui/material/Box'
 import { TabPanel, TabContext, TabList } from '@mui/lab';
-import { Tab } from '@mui/material'
+import { Button, Tab } from '@mui/material'
 import Section from './../components/create/Section'
 import Step from './../components/create/Step'
 import Sidebar from "./../components/sidebar/Sidebar"
@@ -13,8 +13,9 @@ const stockRecipe = [{}, [], []];
 const Create = () => {
 	const [value, setValue] = useState("0");
 	const [recipe, setRecipe] = useState(stockRecipe);
-
 	const { recipeId } = useParams();
+
+	let db, docRef, docSnap;
 
 	const handleTabChange = (event, newValue) => {
 		setValue(newValue);
@@ -29,10 +30,10 @@ const Create = () => {
 	}
 
 	//Fetches recipe document data from Firebase
-	const fetchRecipe = async() => {
-		const db = getFirestore();
-		const docRef = doc(db, "recipes", recipeId);
-		const docSnap = await getDoc(docRef);
+	const fetchRecipe = async () => {
+		db = getFirestore();
+		docRef = doc(db, "recipes", recipeId);
+		docSnap = await getDoc(docRef);
 
 		if (docSnap.exists()) {
 			readRecipeFromDoc(docSnap.data());
@@ -50,6 +51,23 @@ const Create = () => {
 		newRecipe[1] = data.ingredients;
 		newRecipe[2] = data.directions;
 		setRecipe(newRecipe);
+	}
+
+	const updateRecipe = async () => {
+		// doc.update({
+		// 	overview: recipe[0],
+		// 	ingredients: recipe[1],
+		// 	directions: recipe[2]
+		// })
+		const status = setDoc(docRef, {
+			overview: recipe[0],
+			ingredients: recipe[1],
+			directions: recipe[2]
+		}, { merge: true })
+
+		status
+			.then(value => { console.log(value) })
+			.catch(err => { console.log(err) })
 	}
 
 	useEffect(() => {
@@ -74,6 +92,9 @@ const Create = () => {
 					<TabPanel value="2"><Section id={1} value={recipe[1]} onChange={handleData} type="ingredients" /></TabPanel>
 					<TabPanel value="3"><Section id={2} value={recipe[2]} onChange={handleData} /></TabPanel>
 				</TabContext>
+				<Button onClick={updateRecipe}>
+					Save
+				</Button>
 			</div>
 		</div>
 	)

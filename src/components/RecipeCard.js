@@ -14,8 +14,8 @@ const RecipeCard = (props) => {
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
-        <h3>{props.recipe.data.title}</h3>
-        <p>{props.recipe.data.description}</p>
+        <h3>{props.recipe.overview.title}</h3>
+        <p>{props.recipe.overview.desc}</p>
       </CardContent>
       <CardActions>
         <Link to={`/create/${props.recipe.id}`}>

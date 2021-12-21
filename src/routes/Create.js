@@ -29,13 +29,13 @@ const Create = () => {
 	}
 
 	//Fetches recipe document data from Firebase
-	const fetchRecipe = async () => {
+	const fetchRecipe = async() => {
 		const db = getFirestore();
 		const docRef = doc(db, "recipes", recipeId);
 		const docSnap = await getDoc(docRef);
 
 		if (docSnap.exists()) {
-			setRecipeFromDoc(docSnap.data());
+			readRecipeFromDoc(docSnap.data());
 		} else {
 			// doc.data() will be undefined in this case
 			// maybe prompt an error in the future.
@@ -44,10 +44,9 @@ const Create = () => {
 	}
 
 	//Changes recipe state from firebase document data
-	const setRecipeFromDoc = (data) => {
+	const readRecipeFromDoc = (data) => {
 		const newRecipe = [...stockRecipe];
-		newRecipe[0] = { title: data.title, desc: data.description };
-		// console.log(JSON.stringify(data));
+		newRecipe[0] = data.overview;
 		newRecipe[1] = data.ingredients;
 		newRecipe[2] = data.directions;
 		setRecipe(newRecipe);

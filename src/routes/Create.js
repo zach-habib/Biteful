@@ -8,7 +8,7 @@ import Section from './../components/create/Section'
 import Step from './../components/create/Step'
 import Sidebar from "./../components/sidebar/Sidebar"
 
-const stockRecipe = [{}, { items: [] }, { items: [] }];
+const stockRecipe = [{}, [], []];
 
 const Create = () => {
 	const [value, setValue] = useState("0");
@@ -48,8 +48,8 @@ const Create = () => {
 		const newRecipe = [...stockRecipe];
 		newRecipe[0] = { title: data.title, desc: data.description };
 		// console.log(JSON.stringify(data));
-		newRecipe[1] = { items: data.ingredients };
-		newRecipe[2] = { items: data.directions };
+		newRecipe[1] = data.ingredients;
+		newRecipe[2] = data.directions;
 		setRecipe(newRecipe);
 	}
 

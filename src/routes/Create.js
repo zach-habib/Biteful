@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import { getFirestore, collection, doc, getDoc, setDoc } from "firebase/firestore";
 import Box from '@mui/material/Box'
 import { TabPanel, TabContext, TabList } from '@mui/lab';
 import { Button, Tab } from '@mui/material'
@@ -16,6 +16,7 @@ const Create = () => {
 	const { recipeId } = useParams();
 
 	let db, docRef, docSnap;
+	db = getFirestore();
 
 	const handleTabChange = (event, newValue) => {
 		setValue(newValue);
@@ -31,7 +32,6 @@ const Create = () => {
 
 	//Fetches recipe document data from Firebase
 	const fetchRecipe = async () => {
-		db = getFirestore();
 		docRef = doc(db, "recipes", recipeId);
 		docSnap = await getDoc(docRef);
 
@@ -54,20 +54,16 @@ const Create = () => {
 	}
 
 	const updateRecipe = async () => {
-		// doc.update({
-		// 	overview: recipe[0],
-		// 	ingredients: recipe[1],
-		// 	directions: recipe[2]
-		// })
-		const status = setDoc(docRef, {
+		const recipesRef = collection(db, "recipes");
+		const status = await setDoc(doc(recipesRef, recipeId), {
 			overview: recipe[0],
 			ingredients: recipe[1],
 			directions: recipe[2]
 		}, { merge: true })
 
-		status
-			.then(value => { console.log(value) })
-			.catch(err => { console.log(err) })
+		// status
+		// 	.then(value => { console.log(value) })
+		// 	.catch(err => { console.log(err) })
 	}
 
 	useEffect(() => {

@@ -4,6 +4,7 @@ import Sidebar from "../components/sidebar/Sidebar";
 import RecipeView from '../components/RecipeView';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { createRecipeDoc } from '../util/RecipeConverter';
 
 const MyRecipes = () => {
   const [recipes, setRecipes] = useState([])
@@ -25,8 +26,8 @@ const MyRecipes = () => {
   //Creates recipe on firebase,
   //then navigates to the create page
   const createRecipe = async () => {
-    const docRef = await addDoc(collection(db, "recipes"), {});
-    if (docRef) navigate(`/create/$docRef.id`);
+    const docRef = await addDoc(collection(db, "recipes"), createRecipeDoc());
+    if (docRef) navigate(`/create/${docRef.id}`);
   }
 
   useEffect(() => {

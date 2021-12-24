@@ -9,6 +9,10 @@ export const getDefaultRecipe = () => {
   return [...stockRecipe];
 }
 
+export const createRecipeDoc = () => {
+  return recipeToDoc(getDefaultRecipe());
+}
+
 export const docToRecipe = (doc) => {
   const recipe = [...stockRecipe];
   Object.assign(recipe[0], doc.overview);

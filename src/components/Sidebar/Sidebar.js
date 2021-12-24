@@ -32,15 +32,6 @@ const Sidebar = () => {
       >
         My Recipes
       </Button>
-      <Button
-        variant="contained"
-        component={Link}
-        to="/create"
-        label="Create"
-        value="create"
-      >
-        Create
-      </Button>
     </div>
   )
 }

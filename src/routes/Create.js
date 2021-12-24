@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { getFirestore, collection, doc, getDoc, setDoc } from "firebase/firestore";
+import { docToRecipe, recipeToDoc } from '../util/RecipeConverter';
 import Box from '@mui/material/Box'
 import { TabPanel, TabContext, TabList } from '@mui/lab';
 import { Button, Tab } from '@mui/material'
@@ -8,11 +9,9 @@ import Section from './../components/create/Section'
 import Step from './../components/create/Step'
 import Sidebar from "./../components/sidebar/Sidebar"
 
-const stockRecipe = [{ title: '', desc: '' }, [], []];
-
 const Create = () => {
 	const [value, setValue] = useState("1");
-	const [recipe, setRecipe] = useState(stockRecipe);
+	const [recipe, setRecipe] = useState(docToRecipe({}));
 	const { recipeId } = useParams();
 
 	let db, docRef, docSnap;
@@ -46,24 +45,13 @@ const Create = () => {
 
 	//Changes recipe state from firebase document data
 	const readRecipeFromDoc = (data) => {
-		const newRecipe = [...stockRecipe];
-		newRecipe[0] = data.overview;
-		newRecipe[1] = data.ingredients;
-		newRecipe[2] = data.directions;
+		const newRecipe = docToRecipe(data)
 		setRecipe(newRecipe);
 	}
 
 	const updateRecipe = async () => {
 		const recipesRef = collection(db, "recipes");
-		const status = await setDoc(doc(recipesRef, recipeId), {
-			overview: recipe[0],
-			ingredients: recipe[1],
-			directions: recipe[2]
-		}, { merge: true })
-
-		// status
-		// 	.then(value => { console.log(value) })
-		// 	.catch(err => { console.log(err) })
+		const status = await setDoc(doc(recipesRef, recipeId), recipeToDoc(recipe), { merge: true })
 	}
 
 	useEffect(() => {

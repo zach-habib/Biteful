@@ -10,12 +10,14 @@ import Typography from '@mui/material/Typography';
 //and show details when hovered.
 
 const RecipeCard = (props) => {
+  let overview = { title: 'Unnamed Recipe', desc: 'No Description' }
+  if (props.recipe.overview) overview = props.recipe.overview;
 
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
-        <h3>{props.recipe.overview.title}</h3>
-        <p>{props.recipe.overview.desc}</p>
+        <h3>{overview.title}</h3>
+        <p>{overview.desc}</p>
       </CardContent>
       <CardActions>
         <Link to={`/create/${props.recipe.id}`}>

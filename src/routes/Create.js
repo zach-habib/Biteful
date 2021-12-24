@@ -8,10 +8,10 @@ import Section from './../components/create/Section'
 import Step from './../components/create/Step'
 import Sidebar from "./../components/sidebar/Sidebar"
 
-const stockRecipe = [{}, [], []];
+const stockRecipe = [{ title: '', desc: '' }, [], []];
 
 const Create = () => {
-	const [value, setValue] = useState("0");
+	const [value, setValue] = useState("1");
 	const [recipe, setRecipe] = useState(stockRecipe);
 	const { recipeId } = useParams();
 

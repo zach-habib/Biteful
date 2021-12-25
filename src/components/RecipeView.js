@@ -5,7 +5,11 @@ import RecipeCard from "./RecipeCard"
 
 const RecipeView = (props) => {
   const recipeItems = props.recipes.map(recipe => {
-    return <RecipeCard key={recipe.id} recipe={recipe} />
+    return <RecipeCard
+      key={recipe.id}
+      recipe={recipe}
+      onDelete={props.onDelete}
+    />
   })
 
   return (

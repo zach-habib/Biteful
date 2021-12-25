@@ -23,7 +23,9 @@ const RecipeCard = (props) => {
         <Link to={`/create/${props.recipe.id}`}>
           <Button size="small">Edit</Button>
         </Link>
-        <Button size="small">Delete</Button>
+        <Button size="small" onClick={() => { props.onDelete(props.recipe.id) }}>
+          Delete
+        </Button>
       </CardActions>
     </Card>
   )

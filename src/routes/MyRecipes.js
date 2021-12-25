@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getFirestore, collection, getDocs, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore';
 import Sidebar from "../components/sidebar/Sidebar";
 import RecipeView from '../components/RecipeView';
 import { Button } from '@mui/material';
@@ -14,7 +14,6 @@ const MyRecipes = () => {
   //Fetches recipe data from firestore and updates state.
   //Todo: Change this to a query that only returns recipes made by the user.
   const fetchRecipes = async () => {
-
     const data = await getDocs(collection(db, "recipes"));
     const newRecipes = []
     data.forEach((doc) => {
@@ -30,6 +29,12 @@ const MyRecipes = () => {
     if (docRef) navigate(`/create/${docRef.id}`);
   }
 
+  //todo: Popup a confirmation window before deleting
+  const deleteRecipe = async (recipeId) => {
+    await deleteDoc(doc(db, "recipes", recipeId))
+    // console.log(`This will delete recipe of id ${recipeId}`);
+  }
+
   useEffect(() => {
     fetchRecipes();
   }, [])
@@ -40,7 +45,7 @@ const MyRecipes = () => {
       <div className="content">
         <h1>My Recipes</h1>
         <div className="recipes-view">
-          <RecipeView recipes={recipes} />
+          <RecipeView recipes={recipes} onDelete={deleteRecipe} />
         </div>
         <Button variant="contained" onClick={createRecipe}>
           Create

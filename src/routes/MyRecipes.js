@@ -32,7 +32,8 @@ const MyRecipes = () => {
   //todo: Popup a confirmation window before deleting
   const deleteRecipe = async (recipeId) => {
     await deleteDoc(doc(db, "recipes", recipeId))
-    // console.log(`This will delete recipe of id ${recipeId}`);
+
+    setRecipes(recipes.filter(recipe => recipe.id !== recipeId));
   }
 
   useEffect(() => {

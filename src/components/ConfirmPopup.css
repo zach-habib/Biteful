@@ -1,0 +1,17 @@
+.confirm-popup-bg {
+  transform: translate(0%, -3%);
+  position: fixed;
+  width: 100%;
+  height: 110%;
+  z-index: 2;
+  background-color: #202020;
+  opacity: 0.55;
+  overflow: hidden; /* disable scrolling*/
+}
+
+.confirm-popup-container {
+  position: absolute;
+  transform: translate(50%, 0%);
+  width: 325px;
+  z-index: 5;
+}

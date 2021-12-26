@@ -5,9 +5,12 @@ import RecipeView from '../components/RecipeView';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { createRecipeDoc } from '../util/RecipeConverter';
+import ConfirmPopup from '../components/ConfirmPopup';
 
 const MyRecipes = () => {
   const [recipes, setRecipes] = useState([])
+  const [showPopup, setPopup] = useState(false);
+  const [recipeDelete, setRecipeDelete] = useState('');
   const db = getFirestore();
   const navigate = useNavigate();
 
@@ -29,11 +32,16 @@ const MyRecipes = () => {
     if (docRef) navigate(`/create/${docRef.id}`);
   }
 
-  //todo: Popup a confirmation window before deleting
-  const deleteRecipe = async (recipeId) => {
-    await deleteDoc(doc(db, "recipes", recipeId))
+  const handleDelete = (recipeId) => {
+    setPopup(true);
+    setRecipeDelete(recipeId);
+  }
 
-    setRecipes(recipes.filter(recipe => recipe.id !== recipeId));
+  //todo: Popup a confirmation window before deleting
+  const deleteRecipe = async () => {
+    await deleteDoc(doc(db, "recipes", recipeDelete))
+    setRecipes(recipes.filter(recipe => recipe.id !== recipeDelete));
+    setPopup(false);
   }
 
   useEffect(() => {
@@ -43,10 +51,23 @@ const MyRecipes = () => {
   return (
     <div className="main">
       <Sidebar />
+
       <div className="content">
+        {showPopup
+          ?
+          <ConfirmPopup
+            onConfirm={deleteRecipe}
+            onCancel={() => { setPopup(false) }}
+          />
+          :
+          null
+        }
         <h1>My Recipes</h1>
         <div className="recipes-view">
-          <RecipeView recipes={recipes} onDelete={deleteRecipe} />
+          <RecipeView
+            recipes={recipes}
+            onDelete={handleDelete}
+          />
         </div>
         <Button variant="contained" onClick={createRecipe}>
           Create

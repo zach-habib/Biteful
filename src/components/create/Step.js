@@ -1,4 +1,5 @@
-import TextField from '@mui/material/TextField'
+import { TextField, Fab } from '@mui/material'
+import { Remove } from '@mui/icons-material'
 
 import './Step.css'
 
@@ -16,6 +17,18 @@ const Step = (props) => {
     ChangeHandler(newValue, props.id);
   }
 
+  const removeBtn = props.onRemove ?
+    <Fab
+      color="primary"
+      size="small"
+      aria-label="remove"
+      onClick={() => { props.onRemove(props.id) }}
+    >
+      <Remove />
+    </Fab>
+    :
+    null;
+
   return (
     <div className="stepForm">
       <TextField className="title"
@@ -32,6 +45,7 @@ const Step = (props) => {
         value={props.value.desc}
         onChange={handleFieldChange("desc")}
       />
+      {removeBtn}
     </div>
   )
 }

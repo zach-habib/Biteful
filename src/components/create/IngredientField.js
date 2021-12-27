@@ -1,4 +1,5 @@
-import TextField from '@mui/material/TextField'
+import { Fab, TextField } from '@mui/material'
+import { Remove } from '@mui/icons-material'
 
 /*
   props: {
@@ -39,6 +40,14 @@ const IngredientField = (props) => {
         value={props.value.amount}
         onChange={handleFieldChange("amount")}
       />
+      <Fab
+        color="primary"
+        size="small"
+        aria-label="remove"
+        onClick={() => {props.onRemove(props.id)}}
+      >
+        <Remove />
+      </Fab>
     </div>
   )
 }

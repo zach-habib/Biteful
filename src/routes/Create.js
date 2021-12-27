@@ -80,7 +80,6 @@ const Create = () => {
 				<Button onClick={updateRecipe}>
 					Save
 				</Button>
-				<p>{JSON.stringify(recipe)}</p>
 			</div>
 		</div>
 	)

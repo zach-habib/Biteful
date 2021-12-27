@@ -8,6 +8,7 @@ import { Button, Tab } from '@mui/material'
 import Section from './../components/create/Section'
 import Step from './../components/create/Step'
 import Sidebar from "./../components/sidebar/Sidebar"
+import { jsonEval } from '@firebase/util';
 
 const Create = () => {
 	const [value, setValue] = useState("1");
@@ -79,6 +80,7 @@ const Create = () => {
 				<Button onClick={updateRecipe}>
 					Save
 				</Button>
+				<p>{JSON.stringify(recipe)}</p>
 			</div>
 		</div>
 	)

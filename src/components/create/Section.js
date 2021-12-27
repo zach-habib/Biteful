@@ -23,7 +23,7 @@ const Section = (props) => {
   const AddItem = () => {
     let newData = [...data];
     newData[newData.length] =
-      props.type === "ingredient" ?
+      props.type === "ingredients" ?
         { ...StockIngredient }
         :
         { ...StockStep };

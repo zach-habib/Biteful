@@ -5,6 +5,9 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import './RecipeView.css'
+import { Delete, Edit } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
 
 //idea: show recipe image on home page,
 //and show details when hovered.
@@ -12,20 +15,23 @@ import Typography from '@mui/material/Typography';
 const RecipeCard = (props) => {
   let overview = { title: 'Unnamed Recipe', desc: 'No Description' }
   if (props.recipe.overview) overview = props.recipe.overview;
+  if (props.recipe.overview.title === '') overview.title = 'Unnamed Recipe'
 
   return (
-    <Card sx={{ minWidth: 275 }}>
+    <Card sx={{ width: 275, height: 200 }}>
       <CardContent>
-        <h3>{overview.title}</h3>
-        <p>{overview.desc}</p>
+        <Typography sx={{ fontSize: 20, fontWeight: 600 }}>{overview.title}</Typography>
+        <Typography>{overview.desc}</Typography>
       </CardContent>
-      <CardActions>
+      <CardActions disableSpacing className="card-actions">
         <Link to={`/create/${props.recipe.id}`}>
-          <Button size="small">Edit</Button>
+          <IconButton>
+            <Edit />
+          </IconButton>
         </Link>
-        <Button size="small" onClick={() => { props.onDelete(props.recipe.id) }}>
-          Delete
-        </Button>
+        <IconButton onClick={() => { props.onDelete(props.recipe.id) }}>
+          <Delete />
+        </IconButton>
       </CardActions>
     </Card>
   )

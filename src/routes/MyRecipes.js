@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useFirebaseAuth } from '../FirebaseAuthProvider';
 import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore';
 import Sidebar from "../components/sidebar/Sidebar";
 import RecipeView from '../components/RecipeView';
@@ -13,6 +14,7 @@ const MyRecipes = () => {
   const [recipeDelete, setRecipeDelete] = useState('');
   const db = getFirestore();
   const navigate = useNavigate();
+  const auth = useFirebaseAuth();
 
   //Fetches recipe data from firestore and updates state.
   //Todo: Change this to a query that only returns recipes made by the user.
@@ -28,7 +30,9 @@ const MyRecipes = () => {
   //Creates recipe on firebase,
   //then navigates to the create page
   const createRecipe = async () => {
-    const docRef = await addDoc(collection(db, "recipes"), createRecipeDoc());
+    const recipeDoc = createRecipeDoc();
+    recipeDoc.authorId = auth.uid;
+    const docRef = await addDoc(collection(db, "recipes"), recipeDoc);
     if (docRef) navigate(`/create/${docRef.id}`);
   }
 

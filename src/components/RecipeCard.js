@@ -18,9 +18,9 @@ const RecipeCard = (props) => {
   if (props.recipe.overview.title === '') overview.title = 'Unnamed Recipe'
 
   return (
-    <Card sx={{ width: 275, height: 200 }}>
+    <Card sx={{ height: 200 }}>
       <CardContent>
-        <Typography sx={{ fontSize: 20, fontWeight: 600 }}>{overview.title}</Typography>
+        <Typography sx={{ fontSize: 20, fontWeight: 600 }} noWrap>{overview.title}</Typography>
         <Typography>{overview.desc}</Typography>
       </CardContent>
       <CardActions disableSpacing className="card-actions">

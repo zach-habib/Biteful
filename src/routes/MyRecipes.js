@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useFirebaseAuth } from '../FirebaseAuthProvider';
-import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, addDoc, deleteDoc, doc, query, where } from 'firebase/firestore';
 import Sidebar from "../components/sidebar/Sidebar";
 import RecipeView from '../components/RecipeView';
 import { Button } from '@mui/material';
@@ -19,7 +19,8 @@ const MyRecipes = () => {
   //Fetches recipe data from firestore and updates state.
   //Todo: Change this to a query that only returns recipes made by the user.
   const fetchRecipes = async () => {
-    const data = await getDocs(collection(db, "recipes"));
+    const q = query(collection(db, "recipes"), where("authorId", "==", auth.uid))
+    const data = await getDocs(q);
     const newRecipes = []
     data.forEach((doc) => {
       newRecipes.push({ ...doc.data(), id: doc.id });
@@ -48,9 +49,10 @@ const MyRecipes = () => {
     setPopup(false);
   }
 
-  useEffect(() => {
+  //Fetch recipes only once when available.
+  if (auth && recipes.length === 0) {
     fetchRecipes();
-  }, [])
+  }
 
   return (
     <div className="main">

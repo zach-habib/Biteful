@@ -9,7 +9,7 @@ function Home() {
     <div className="main">
       <Sidebar />
       <div className="content">
-        <h1>Byteful</h1>
+        <h1>Biteful</h1>
         <Link to="/create">
           <Button variant="contained">Add</Button>
         </Link>

@@ -71,6 +71,7 @@ const MyRecipes = () => {
           <RecipeView
             recipes={recipes}
             onDelete={handleDelete}
+            editable
           />
         </div>
         <Button variant="contained" onClick={createRecipe}>

@@ -23,16 +23,19 @@ const RecipeCard = (props) => {
         <Typography sx={{ fontSize: 20, fontWeight: 600 }} noWrap>{overview.title}</Typography>
         <Typography>{overview.desc}</Typography>
       </CardContent>
-      <CardActions disableSpacing className="card-actions">
-        <Link to={`/create/${props.recipe.id}`}>
-          <IconButton>
-            <Edit />
+      {props.editable ?
+        <CardActions disableSpacing className="card-actions">
+          <Link to={`/create/${props.recipe.id}`}>
+            <IconButton>
+              <Edit />
+            </IconButton>
+          </Link>
+          <IconButton onClick={() => { props.onDelete(props.recipe.id) }}>
+            <Delete />
           </IconButton>
-        </Link>
-        <IconButton onClick={() => { props.onDelete(props.recipe.id) }}>
-          <Delete />
-        </IconButton>
-      </CardActions>
+        </CardActions>
+        : null
+      }
     </Card>
   )
 }

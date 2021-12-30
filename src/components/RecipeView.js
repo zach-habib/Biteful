@@ -10,6 +10,7 @@ const RecipeView = (props) => {
         <RecipeCard
           recipe={recipe}
           onDelete={props.onDelete}
+          editable={props.editable}
         />
       </Grid>
     )

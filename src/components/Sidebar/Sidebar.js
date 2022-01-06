@@ -6,6 +6,7 @@ const Sidebar = () => {
     <div className="sidebar">
       <Button className="sidebar-button"
         variant="contained"
+        sx={{ m: 0.5 }}
         component={Link}
         to="/"
         label="Home"
@@ -15,6 +16,7 @@ const Sidebar = () => {
       </Button>
       <Button className="sidebar-button"
         variant="contained"
+        sx={{ m: 0.5 }}
         component={Link}
         to="/login"
         label="Login"
@@ -24,6 +26,7 @@ const Sidebar = () => {
       </Button>
       <Button className="sidebar-button"
         variant="contained"
+        sx={{ m: 0.5 }}
         component={Link}
         to="/myrecipes"
         label="MyRecipes"

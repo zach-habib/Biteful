@@ -23,10 +23,8 @@
   flex-direction: column;
 }
 
-.sidebarItem {
-  width: 60px;
-  height: 60px;
-  margin: 4px;
+.sidebar-button {
+  margin: 40px;
   background: black;
 }
 

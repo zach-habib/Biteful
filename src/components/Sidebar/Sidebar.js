@@ -8,7 +8,7 @@ const darkTheme = createTheme({ palette: { mode: 'dark' } });
 const Sidebar = () => {
   return (
     <ThemeProvider theme={darkTheme}>
-      <Paper className="sidebar" elevation={40} background square>
+      <Paper className="sidebar" elevation={24} square>
         <Button className="sidebar-button"
           variant="contained"
           sx={{ m: 0.5 }}

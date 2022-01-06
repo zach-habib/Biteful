@@ -1,4 +1,4 @@
-//Main
+/* Main */
 .App {
   margin-top: 0;
 }
@@ -13,7 +13,7 @@
   margin-left: 200px;
 }
 
-//Sidebar
+/* Sidebar */
 .sidebar {
   position: fixed;
   top: 0;
@@ -28,7 +28,7 @@
   background: black;
 }
 
-//Recipe View
+/* Recipe View */
 .recipe-view {
   padding: 10px;
   padding-bottom: 30px;
@@ -41,7 +41,7 @@
   height: 40%;
 }
 
-//Other
+/* Other */
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

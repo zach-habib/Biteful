@@ -1,11 +1,10 @@
 import Button from '@mui/material/Button'
 import { Link } from 'react-router-dom'
-import SidebarItem from "./SidebarItem"
 
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <Button
+      <Button className="sidebar-button"
         variant="contained"
         component={Link}
         to="/"
@@ -14,7 +13,7 @@ const Sidebar = () => {
       >
         Home
       </Button>
-      <Button
+      <Button className="sidebar-button"
         variant="contained"
         component={Link}
         to="/login"
@@ -23,7 +22,7 @@ const Sidebar = () => {
       >
         Login
       </Button>
-      <Button
+      <Button className="sidebar-button"
         variant="contained"
         component={Link}
         to="/myrecipes"

@@ -1,5 +1,4 @@
 import { Button, Card, CardActions, CardContent } from "@mui/material";
-import './ConfirmPopup.css'
 
 const ConfirmPopup = (props) => {
   return (

@@ -5,7 +5,6 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import './RecipeView.css'
 import { Delete, Edit } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 

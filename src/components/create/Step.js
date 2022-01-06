@@ -1,8 +1,6 @@
 import { TextField, Fab } from '@mui/material'
 import { Remove } from '@mui/icons-material'
 
-import './Step.css'
-
 const Step = (props) => {
   const ChangeHandler = props.onChange
 

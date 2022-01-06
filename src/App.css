@@ -28,6 +28,40 @@
   background: black;
 }
 
+/* Forms */
+.stepForm {
+  display: flex;
+  flex-direction: column;
+  margin: 2px;
+}
+
+.title {
+  margin: 4px;
+}
+
+.desc {
+  margin: 4px;
+}
+
+/* Confirm Popup */
+.confirm-popup-bg {
+  transform: translate(0%, -3%);
+  position: fixed;
+  width: 100%;
+  height: 110%;
+  z-index: 2;
+  background-color: #202020;
+  opacity: 0.55;
+  overflow: hidden; /* disable scrolling*/
+}
+
+.confirm-popup-container {
+  position: absolute;
+  transform: translate(50%, 0%);
+  width: 325px;
+  z-index: 5;
+}
+
 /* Recipe View */
 .recipe-view {
   padding: 10px;
@@ -39,6 +73,17 @@
   background: gray;
   width: 40%;
   height: 40%;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.MuiCard-root {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
 }
 
 /* Other */

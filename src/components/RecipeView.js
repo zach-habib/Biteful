@@ -18,6 +18,7 @@ const RecipeView = (props) => {
 
   return (
     <Grid
+      className="recipe-view"
       container
       direction="row"
       justifyContent="center"

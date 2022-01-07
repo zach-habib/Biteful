@@ -1,5 +1,6 @@
 import { Fab, TextField, Select, MenuItem, InputLabel } from '@mui/material'
 import { Remove } from '@mui/icons-material'
+import { units } from '../../util/RecipeConverter'
 
 /*
   props: {
@@ -7,13 +8,6 @@ import { Remove } from '@mui/icons-material'
     onChange: function
   }
 */
-
-const units = [
-  "None",
-  "kg",
-  "tsp",
-  "oz",
-]
 
 const IngredientField = (props) => {
   const ChangeHandler = props.onChange
@@ -57,9 +51,6 @@ const IngredientField = (props) => {
         onChange={handleFieldChange("unit")}
         sx={{ width: 85 }}
       >
-        {/* <MenuItem value={1}>kg</MenuItem>
-        <MenuItem value={2}>tsp</MenuItem>
-        <MenuItem value={3}>oz</MenuItem> */}
         {units.map((unit, idx) => (
           <MenuItem key={idx} value={idx}>{unit}</MenuItem>
         ))}

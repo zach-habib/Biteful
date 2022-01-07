@@ -1,8 +1,8 @@
-import { DomainVerification } from "@mui/icons-material";
+
 
 const stockRecipe = [
   { title: '', desc: '' },
-  [{ name: '', amount: 0 }],
+  [{ name: '', amount: 0, unit: 0 }],
   [{ title: '', desc: '' }]
 ];
 

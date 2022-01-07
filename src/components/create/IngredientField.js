@@ -1,4 +1,4 @@
-import { Fab, TextField } from '@mui/material'
+import { Fab, TextField, Select, MenuItem, InputLabel } from '@mui/material'
 import { Remove } from '@mui/icons-material'
 
 /*
@@ -7,6 +7,13 @@ import { Remove } from '@mui/icons-material'
     onChange: function
   }
 */
+
+const units = [
+  "None",
+  "kg",
+  "tsp",
+  "oz",
+]
 
 const IngredientField = (props) => {
   const ChangeHandler = props.onChange
@@ -17,6 +24,7 @@ const IngredientField = (props) => {
     //Change the associated parameter
     if (fieldName === "name") newValues.name = event.target.value;
     if (fieldName === "amount") newValues.amount = event.target.value;
+    if (fieldName === "unit") newValues.unit = event.target.value;
 
     //Call change handler of parent component
     ChangeHandler(newValues, props.id);
@@ -40,14 +48,31 @@ const IngredientField = (props) => {
         value={props.value.amount}
         onChange={handleFieldChange("amount")}
       />
+      <InputLabel id="unit-select-label">Unit</InputLabel>
+      <TextField
+        select
+        id="unit"
+        label="Unit"
+        value={props.value.unit}
+        onChange={handleFieldChange("unit")}
+        sx={{ width: 85 }}
+      >
+        {/* <MenuItem value={1}>kg</MenuItem>
+        <MenuItem value={2}>tsp</MenuItem>
+        <MenuItem value={3}>oz</MenuItem> */}
+        {units.map((unit, idx) => (
+          <MenuItem key={idx} value={idx}>{unit}</MenuItem>
+        ))}
+      </TextField>
       <Fab
         color="primary"
         size="small"
         aria-label="remove"
-        onClick={() => {props.onRemove(props.id)}}
+        onClick={() => { props.onRemove(props.id) }}
       >
         <Remove />
       </Fab>
+
     </div>
   )
 }

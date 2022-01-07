@@ -8,7 +8,7 @@ const StockStep = {
   title: '',
   desc: '',
 }
-const StockIngredient = { name: '', amount: 0 }
+const StockIngredient = { name: '', amount: 0, unit: 0 }
 
 const Section = (props) => {
   const data = props.value

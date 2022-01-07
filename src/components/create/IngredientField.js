@@ -42,7 +42,6 @@ const IngredientField = (props) => {
         value={props.value.amount}
         onChange={handleFieldChange("amount")}
       />
-      <InputLabel id="unit-select-label">Unit</InputLabel>
       <TextField
         select
         id="unit"

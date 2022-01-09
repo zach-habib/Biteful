@@ -6,7 +6,7 @@ import RecipeCard from "./RecipeCard"
 const RecipeView = (props) => {
   const recipeItems = props.recipes.map(recipe => {
     return (
-      <Grid item sm={2} md={2} xl={2} key={recipe.id}>
+      <Grid item key={recipe.id}>
         <RecipeCard
           recipe={recipe}
           onDelete={props.onDelete}

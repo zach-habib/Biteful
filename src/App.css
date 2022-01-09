@@ -28,6 +28,11 @@
   background: black;
 }
 
+/* View Page */
+.recipe-paper {
+  margin: 0 auto;
+}
+
 /* Forms */
 .create-container {
   width: 70%;

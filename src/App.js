@@ -8,6 +8,7 @@ import Home from "./routes/Home"
 import Create from "./routes/Create"
 import Login from "./routes/Login"
 import MyRecipes from './routes/MyRecipes'
+import View from "./routes/View";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDAQyMXDa-HVItPIQQjGT5qZu9GxBnhy8E",
@@ -57,6 +58,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route exact path="create/:recipeId" element={<Create />} />
+            <Route exact path="view/:recipeId" element={<View />} />
             <Route path="login" element={<Login login={SignIn} logout={SignOut} />} />
             <Route path="myrecipes" element={<MyRecipes />} />
           </Routes>

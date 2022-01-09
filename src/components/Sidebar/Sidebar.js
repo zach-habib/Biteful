@@ -1,5 +1,5 @@
 import Button from '@mui/material/Button'
-import { Paper } from '@mui/material'
+import { Avatar, Paper } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link } from 'react-router-dom'
 

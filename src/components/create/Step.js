@@ -17,6 +17,8 @@ const Step = (props) => {
 
   const removeBtn = props.onRemove ?
     <Fab
+      className="remove-button"
+      sx={{mx: 1}}
       color="primary"
       size="small"
       aria-label="remove"
@@ -29,22 +31,24 @@ const Step = (props) => {
 
   return (
     <div className="step-form">
-      <TextField
-        id="title"
-        label="Title"
-        sx={{ margin: 1 }}
-        value={props.value.title}
-        onChange={handleFieldChange("title")}
-      />
-      <TextField
-        id="desc"
-        multiline
-        rows={4}
-        label="Description"
-        sx={{ margin: 1 }}
-        value={props.value.desc}
-        onChange={handleFieldChange("desc")}
-      />
+      <div className="step-field-container">
+        <TextField
+          id="title"
+          label="Title"
+          sx={{ margin: 1 }}
+          value={props.value.title}
+          onChange={handleFieldChange("title")}
+        />
+        <TextField
+          id="desc"
+          multiline
+          rows={4}
+          label="Description"
+          sx={{ margin: 1 }}
+          value={props.value.desc}
+          onChange={handleFieldChange("desc")}
+        />
+      </div>
       {removeBtn}
     </div>
   )

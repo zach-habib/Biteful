@@ -57,11 +57,11 @@ const IngredientField = (props) => {
         ))}
       </TextField>
       <Fab
-        className="minus-button"
+        className="remove-button"
         color="primary"
         size="small"
         aria-label="remove"
-        sx={{margin: "auto"}}
+        sx={{mx: 1}}
         onClick={() => { props.onRemove(props.id) }}
       >
         <Remove />

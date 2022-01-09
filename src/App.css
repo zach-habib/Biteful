@@ -36,11 +36,16 @@
 
 .step-form {
   display: flex;
+}
+
+.step-field-container {
+  width: 80%;
+  display: flex;
   flex-direction: column;
   margin: 2px;
 }
 
-.minus-button {
+.remove-button {
   transform: translate(0, 33%);
 }
 

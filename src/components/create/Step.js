@@ -28,18 +28,20 @@ const Step = (props) => {
     null;
 
   return (
-    <div className="stepForm">
-      <TextField className="title"
+    <div className="step-form">
+      <TextField
         id="title"
         label="Title"
+        sx={{ margin: 1 }}
         value={props.value.title}
         onChange={handleFieldChange("title")}
       />
-      <TextField className="desc"
+      <TextField
         id="desc"
         multiline
         rows={4}
         label="Description"
+        sx={{ margin: 1 }}
         value={props.value.desc}
         onChange={handleFieldChange("desc")}
       />

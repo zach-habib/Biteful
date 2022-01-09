@@ -4,7 +4,7 @@ import { getFirestore, collection, doc, getDoc, setDoc } from "firebase/firestor
 import { docToRecipe, recipeToDoc } from '../util/RecipeConverter';
 import Box from '@mui/material/Box'
 import { TabPanel, TabContext, TabList } from '@mui/lab';
-import { Button, Tab} from '@mui/material'
+import { Button, Tab } from '@mui/material'
 import Section from './../components/create/Section'
 import Step from './../components/create/Step'
 import Sidebar from "./../components/sidebar/Sidebar"
@@ -63,22 +63,24 @@ const Create = () => {
 			<Sidebar />
 			<div className="content">
 				<h1>Create Recipe</h1>
-				<TabContext value={value}>
-					<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-						<TabList onChange={handleTabChange} aria-label="lab API tabs example">
-							<Tab label="Overview" value="1" />
-							<Tab label="Ingredients" value="2" />
-							<Tab label="Directions" value="3" />
-						</TabList>
-					</Box>
-					<TabPanel value="1"><Step id={0} value={recipe[0]} onChange={handleData} /></TabPanel>
-					<TabPanel value="2"><Section id={1} value={recipe[1]} onChange={handleData} type="ingredients" /></TabPanel>
-					<TabPanel value="3"><Section id={2} value={recipe[2]} onChange={handleData} /></TabPanel>
-				</TabContext>
+				<div className="create-container">
+					<TabContext value={value}>
+						<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+							<TabList onChange={handleTabChange}>
+								<Tab label="Overview" value="1" />
+								<Tab label="Ingredients" value="2" />
+								<Tab label="Directions" value="3" />
+							</TabList>
+						</Box>
+						<TabPanel value="1"><Step id={0} value={recipe[0]} onChange={handleData} /></TabPanel>
+						<TabPanel value="2"><Section id={1} value={recipe[1]} onChange={handleData} type="ingredients" /></TabPanel>
+						<TabPanel value="3"><Section id={2} value={recipe[2]} onChange={handleData} /></TabPanel>
+					</TabContext>
 
-				<Button onClick={updateRecipe}>
-					Save
-				</Button>
+					<Button onClick={updateRecipe}>
+						Save
+					</Button>
+				</div>
 			</div>
 		</div>
 	)

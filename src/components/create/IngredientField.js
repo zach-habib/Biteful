@@ -29,6 +29,7 @@ const IngredientField = (props) => {
       <TextField
         id="name"
         label="Name"
+        sx={{ margin: 1 }}
         value={props.value.name}
         onChange={handleFieldChange("name")}
       />
@@ -39,6 +40,7 @@ const IngredientField = (props) => {
         InputLabelProps={{
           shrink: true,
         }}
+        sx={{margin: 1}}
         value={props.value.amount}
         onChange={handleFieldChange("amount")}
       />
@@ -48,16 +50,18 @@ const IngredientField = (props) => {
         label="Unit"
         value={props.value.unit}
         onChange={handleFieldChange("unit")}
-        sx={{ width: 85 }}
+        sx={{ width: 85, margin: 1 }}
       >
         {units.map((unit, idx) => (
           <MenuItem key={idx} value={idx}>{unit}</MenuItem>
         ))}
       </TextField>
       <Fab
+        className="minus-button"
         color="primary"
         size="small"
         aria-label="remove"
+        sx={{margin: "auto"}}
         onClick={() => { props.onRemove(props.id) }}
       >
         <Remove />

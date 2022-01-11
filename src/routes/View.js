@@ -27,6 +27,7 @@ const View = () => {
     fetchRecipe();
   }, [])
 
+  console.log(recipe)
 
   return (
     <div className="main">
@@ -38,6 +39,16 @@ const View = () => {
         >
           <h1>{recipe[0].title}</h1>
           <p>{recipe[0].desc}</p>
+
+          <h3>Ingredients</h3>
+          {recipe[1].map((item, idx) => {
+            return <p key={idx}>{idx + 1}. {item.name}</p>
+          })}
+
+          <h3>Directions</h3>
+          {recipe[2].map((item, idx) => {
+            return <p key={idx}>{idx + 1}. {item.title}</p>
+          })}
         </Paper>
       </div>
     </div>

@@ -7,7 +7,7 @@ import { TabPanel, TabContext, TabList } from '@mui/lab';
 import { Button, Tab } from '@mui/material'
 import Section from './../components/create/Section'
 import Step from './../components/create/Step'
-import Sidebar from "./../components/sidebar/Sidebar"
+import Sidebar from "../components/sidebar/Sidebar"
 
 const Create = () => {
 	const [value, setValue] = useState("1");

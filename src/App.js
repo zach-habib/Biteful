@@ -54,7 +54,7 @@ function App() {
   return (
     <div className="App">
       <FirebaseAuthProvider>
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route exact path="create/:recipeId" element={<Create />} />

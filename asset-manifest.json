@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Biteful/static/css/main.1e662d7c.css",
-    "main.js": "/Biteful/static/js/main.bd906e23.js",
+    "main.js": "/Biteful/static/js/main.7e654691.js",
     "static/js/787.950c58c2.chunk.js": "/Biteful/static/js/787.950c58c2.chunk.js",
     "index.html": "/Biteful/index.html",
     "main.1e662d7c.css.map": "/Biteful/static/css/main.1e662d7c.css.map",
-    "main.bd906e23.js.map": "/Biteful/static/js/main.bd906e23.js.map",
+    "main.7e654691.js.map": "/Biteful/static/js/main.7e654691.js.map",
     "787.950c58c2.chunk.js.map": "/Biteful/static/js/787.950c58c2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1e662d7c.css",
-    "static/js/main.bd906e23.js"
+    "static/js/main.7e654691.js"
   ]
 }

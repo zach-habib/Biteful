@@ -1,6 +1,6 @@
 # Biteful
 Biteful is a simple website where recipes can be posted and read by users. It is made with ReactJS and Firebase.
-https://kinghabib.github.io/Biteful/
+https://github.com/zach-habib/Biteful
 
 ## How to Use
 In order to read recipes, simply just visit the website and click any recipe on the main page in order to view it.
